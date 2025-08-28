@@ -8,33 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		CCA727002E60D24B001F7D93 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = CCA726FF2E60D24B001F7D93 /* RealityKitContent */; };
+		CCA727132E60D4A2001F7D93 /* CatchEmAllAVPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA7270F2E60D4A2001F7D93 /* CatchEmAllAVPApp.swift */; };
+		CCA727142E60D4A2001F7D93 /* CreaturesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA727102E60D4A2001F7D93 /* CreaturesListView.swift */; };
+		CCA727152E60D4A2001F7D93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCA7270E2E60D4A2001F7D93 /* Assets.xcassets */; };
+		CCA727192E60D84B001F7D93 /* Creatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA727182E60D84B001F7D93 /* Creatures.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CCA726FA2E60D24B001F7D93 /* CatchEmAllAVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatchEmAllAVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA726FE2E60D24B001F7D93 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
+		CCA7270E2E60D4A2001F7D93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CCA7270F2E60D4A2001F7D93 /* CatchEmAllAVPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchEmAllAVPApp.swift; sourceTree = "<group>"; };
+		CCA727102E60D4A2001F7D93 /* CreaturesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreaturesListView.swift; sourceTree = "<group>"; };
+		CCA727112E60D4A2001F7D93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCA727182E60D84B001F7D93 /* Creatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creatures.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		CCA727082E60D24B001F7D93 /* Exceptions for "CatchEmAllAVP" folder in "CatchEmAllAVP" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = CCA726F92E60D24B001F7D93 /* CatchEmAllAVP */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		CCA726FC2E60D24B001F7D93 /* CatchEmAllAVP */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				CCA727082E60D24B001F7D93 /* Exceptions for "CatchEmAllAVP" folder in "CatchEmAllAVP" target */,
-			);
-			path = CatchEmAllAVP;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CCA726F72E60D24B001F7D93 /* Frameworks */ = {
@@ -51,7 +39,7 @@
 		CCA726F12E60D24B001F7D93 = {
 			isa = PBXGroup;
 			children = (
-				CCA726FC2E60D24B001F7D93 /* CatchEmAllAVP */,
+				CCA727122E60D4A2001F7D93 /* CatchEmAllAVP */,
 				CCA726FD2E60D24B001F7D93 /* Packages */,
 				CCA726FB2E60D24B001F7D93 /* Products */,
 			);
@@ -73,6 +61,34 @@
 			path = Packages;
 			sourceTree = "<group>";
 		};
+		CCA727122E60D4A2001F7D93 /* CatchEmAllAVP */ = {
+			isa = PBXGroup;
+			children = (
+				CCA7270E2E60D4A2001F7D93 /* Assets.xcassets */,
+				CCA7270F2E60D4A2001F7D93 /* CatchEmAllAVPApp.swift */,
+				CCA7271A2E60E86A001F7D93 /* Models */,
+				CCA727172E60D4BB001F7D93 /* Views */,
+				CCA727112E60D4A2001F7D93 /* Info.plist */,
+			);
+			path = CatchEmAllAVP;
+			sourceTree = "<group>";
+		};
+		CCA727172E60D4BB001F7D93 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CCA727102E60D4A2001F7D93 /* CreaturesListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CCA7271A2E60E86A001F7D93 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CCA727182E60D84B001F7D93 /* Creatures.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -87,9 +103,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				CCA726FC2E60D24B001F7D93 /* CatchEmAllAVP */,
 			);
 			name = CatchEmAllAVP;
 			packageProductDependencies = (
@@ -138,6 +151,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCA727152E60D4A2001F7D93 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +162,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCA727192E60D84B001F7D93 /* Creatures.swift in Sources */,
+				CCA727132E60D4A2001F7D93 /* CatchEmAllAVPApp.swift in Sources */,
+				CCA727142E60D4A2001F7D93 /* CreaturesListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
