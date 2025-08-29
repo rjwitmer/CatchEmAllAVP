@@ -12,6 +12,9 @@
 		CCA727142E60D4A2001F7D93 /* CreaturesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA727102E60D4A2001F7D93 /* CreaturesListView.swift */; };
 		CCA727152E60D4A2001F7D93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCA7270E2E60D4A2001F7D93 /* Assets.xcassets */; };
 		CCA727192E60D84B001F7D93 /* Creatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA727182E60D84B001F7D93 /* Creatures.swift */; };
+		CCFA59542E61F94100BCB115 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA59532E61F94100BCB115 /* DetailView.swift */; };
+		CCFA59562E61FF6400BCB115 /* Creature.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA59552E61FF6400BCB115 /* Creature.swift */; };
+		CCFA59582E62023A00BCB115 /* CreatureDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA59572E62023A00BCB115 /* CreatureDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		CCA727102E60D4A2001F7D93 /* CreaturesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreaturesListView.swift; sourceTree = "<group>"; };
 		CCA727112E60D4A2001F7D93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCA727182E60D84B001F7D93 /* Creatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creatures.swift; sourceTree = "<group>"; };
+		CCFA59532E61F94100BCB115 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		CCFA59552E61FF6400BCB115 /* Creature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creature.swift; sourceTree = "<group>"; };
+		CCFA59572E62023A00BCB115 /* CreatureDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				CCA727102E60D4A2001F7D93 /* CreaturesListView.swift */,
+				CCFA59532E61F94100BCB115 /* DetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -85,6 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				CCA727182E60D84B001F7D93 /* Creatures.swift */,
+				CCFA59572E62023A00BCB115 /* CreatureDetail.swift */,
+				CCFA59552E61FF6400BCB115 /* Creature.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -163,7 +172,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCA727192E60D84B001F7D93 /* Creatures.swift in Sources */,
+				CCFA59582E62023A00BCB115 /* CreatureDetail.swift in Sources */,
+				CCFA59542E61F94100BCB115 /* DetailView.swift in Sources */,
 				CCA727132E60D4A2001F7D93 /* CatchEmAllAVPApp.swift in Sources */,
+				CCFA59562E61FF6400BCB115 /* Creature.swift in Sources */,
 				CCA727142E60D4A2001F7D93 /* CreaturesListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,24 +1,28 @@
 //
-//  Creatures.swift
+//  CreatureDetail.swift
 //  CatchEmAllAVP
 //
-//  Created by Bob Witmer on 2025-08-28.
+//  Created by Bob Witmer on 2025-08-29.
 //
 
 import Foundation
 
 @Observable     // Will watch objects for changes so that SwiftUI will redraw the interface when needed
-class Creatures {
+class CreatureDetail {
     private struct Returned: Codable {
-        var count: Int
-        var next: String   // TODO: We want to change this to an optional
-//        var previous: String?     // 'previous' isn't used in this app
-        var results: [Creature]
+        var height: Double
+        var weight: Double
+        var sprites: Sprite
     }
     
-    var urlString: String = "https://pokeapi.co/api/v2/pokemon"
-    var count: Int = 0
-    var creaturesArray: [Creature] = []
+    struct Sprite: Codable {
+        var front_default: String
+    }
+    
+    var urlString: String = ""  //TODO: Update with the string passed from the API sprite default
+    var height: Double = 0.0
+    var weight: Double = 0.0
+    var imageURL: String = ""
     
     func getData() async {
         print("🕸️ We are accessing url: \(urlString)")
@@ -37,10 +41,9 @@ class Creatures {
                 print("😡 JSON ERROR: Could not decode JSON data")
                 return
             }
-            
-            self.count = returned.count
-            self.urlString = returned.next
-            self.creaturesArray = returned.results
+            self.height = returned.height
+            self.weight = returned.weight
+            self.imageURL = returned.sprites.front_default
             
             
         } catch {
