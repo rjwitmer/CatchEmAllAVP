@@ -25,17 +25,25 @@ struct DetailView: View {
                 .padding(.bottom)
             
             HStack {
-                Image(systemName: "figure.run.circle")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 96, height: 96)
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                    .shadow(radius: 8, x: 5, y: 5)
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(.white.opacity(0.5), lineWidth: 1)
-                    }
-                    .padding(.trailing)
+                
+                AsyncImage(url: URL(string: creatureDetail.imageURL)) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .shadow(radius: 8, x: 5, y: 5)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(.white.opacity(0.5), lineWidth: 1)
+                        }
+                } placeholder: {
+                    RoundedRectangle(cornerRadius: 10)
+                        .foregroundStyle(.clear)
+
+                }
+                .frame(width: 200, height: 200)
+                .padding(.trailing)
+
                 
                 VStack(alignment: .leading) {
                     HStack(alignment: .top) {
@@ -72,5 +80,5 @@ struct DetailView: View {
 }
 
 #Preview {
-    DetailView(creature: Creature(name: "Pikachu", url: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"))
+    DetailView(creature: Creature(name: "rattata", url: "https://pokeapi.co/api/v2/pokemon/19/"))   // Sample creature
 }

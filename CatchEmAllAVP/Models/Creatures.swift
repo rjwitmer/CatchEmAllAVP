@@ -11,7 +11,7 @@ import Foundation
 class Creatures {
     private struct Returned: Codable {
         var count: Int
-        var next: String   // TODO: We want to change this to an optional
+        var next: String?   // Create as an optional to handle 'null' return
 //        var previous: String?     // 'previous' isn't used in this app
         var results: [Creature]
     }
@@ -37,10 +37,12 @@ class Creatures {
                 print("😡 JSON ERROR: Could not decode JSON data")
                 return
             }
-            
-            self.count = returned.count
-            self.urlString = returned.next
-            self.creaturesArray = returned.results
+            Task { @MainActor in
+                self.count = returned.count
+                self.urlString = returned.next ?? ""    
+                self.creaturesArray = self.creaturesArray + returned.results
+            }
+
             
             
         } catch {
