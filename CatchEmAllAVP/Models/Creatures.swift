@@ -19,13 +19,15 @@ class Creatures {
     var urlString: String = "https://pokeapi.co/api/v2/pokemon"
     var count: Int = 0
     var creaturesArray: [Creature] = []
+    var isLoading: Bool = false
     
     func getData() async {
         print("🕸️ We are accessing url: \(urlString)")
-        
+        isLoading = true
         // Create a URL
         guard let url = URL(string: urlString) else {
             print("😡 ERROR: Could not create a URL from: \(urlString)")
+            isLoading = false
             return
         }
         
@@ -35,18 +37,31 @@ class Creatures {
              // Try to decode the JSON data into our own data structures
             guard let returned = try? JSONDecoder().decode(Returned.self, from: data) else {
                 print("😡 JSON ERROR: Could not decode JSON data")
+                isLoading = false
                 return
             }
             Task { @MainActor in
                 self.count = returned.count
                 self.urlString = returned.next ?? ""    
                 self.creaturesArray = self.creaturesArray + returned.results
+                isLoading = false
             }
 
             
             
         } catch {
             print("😡 ERROR: Could not get data from: \(urlString)")
+            isLoading = false
         }
+    }
+    
+    func loadAllCreatures() async {
+        Task { @MainActor in
+            guard urlString.hasPrefix("http") else { return }
+            
+            await getData()     // get nextpage of data
+            await loadAllCreatures()    // Recursive call until there are no more pages to load 'next = null'
+        }
+    
     }
 }

@@ -25,7 +25,6 @@ struct DetailView: View {
                 .padding(.bottom)
             
             HStack {
-                
                 AsyncImage(url: URL(string: creatureDetail.imageURL)) { image in
                     image
                         .resizable()
