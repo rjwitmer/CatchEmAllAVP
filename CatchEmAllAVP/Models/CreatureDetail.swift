@@ -16,7 +16,19 @@ class CreatureDetail {
     }
     
     struct Sprite: Codable {
-        var front_default: String
+        var other: Other
+    }
+    
+    struct Other: Codable {
+        var officialArtwork: OfficialArtwork
+        
+        enum CodingKeys: String, CodingKey {
+            case officialArtwork = "official-artwork"
+        }
+    }
+    
+    struct OfficialArtwork: Codable {
+        var front_default: String?      // This might return null, which is nil in Swift
     }
     
     var urlString: String = ""  //TODO: Update with the string passed from the API sprite default
@@ -43,7 +55,7 @@ class CreatureDetail {
             }
             self.height = returned.height
             self.weight = returned.weight
-            self.imageURL = returned.sprites.front_default
+            self.imageURL = returned.sprites.other.officialArtwork.front_default ?? "n/a"   // If null use 'n/a' which is an invalid URL
             
             
         } catch {

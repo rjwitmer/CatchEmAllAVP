@@ -25,24 +25,8 @@ struct DetailView: View {
                 .padding(.bottom)
             
             HStack {
-                AsyncImage(url: URL(string: creatureDetail.imageURL)) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                        .shadow(radius: 8, x: 5, y: 5)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(.white.opacity(0.5), lineWidth: 1)
-                        }
-                } placeholder: {
-                    RoundedRectangle(cornerRadius: 10)
-                        .foregroundStyle(.clear)
-
-                }
-                .frame(width: 200, height: 200)
-                .padding(.trailing)
-
+                
+                creatureImage
                 
                 VStack(alignment: .leading) {
                     HStack(alignment: .top) {
@@ -75,6 +59,44 @@ struct DetailView: View {
             creatureDetail.urlString = creature.url // URL passed over in getDetail for CreatureDetail
             await creatureDetail.getData()
         }
+    }
+}
+
+extension DetailView {
+    var creatureImage: some View {
+        AsyncImage(url: URL(string: creatureDetail.imageURL)) { phase in
+            if let image = phase.image {    // We have a valid image
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .shadow(radius: 8, x: 5, y: 5)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(.white.opacity(0.5), lineWidth: 1)
+                    }
+                
+            } else if phase.error != nil {  // We've had an error, load a empty image
+                Image(systemName: "questionmark.square.dashed")
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .shadow(radius: 8, x: 5, y: 5)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(.white.opacity(0.5), lineWidth: 1)
+                    }
+            } else {    // Use a placeholder - image loading
+//                        RoundedRectangle(cornerRadius: 10)
+//                            .foregroundStyle(.clear)
+                ProgressView()
+                    .tint(Color.red)
+                    .scaleEffect(4.0)
+            }
+        }
+        .frame(width: 200, height: 200)
+        .padding(.trailing)
+        
     }
 }
 
