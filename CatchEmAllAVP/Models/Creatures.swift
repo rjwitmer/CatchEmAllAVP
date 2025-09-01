@@ -12,7 +12,7 @@ class Creatures {
     private struct Returned: Codable {
         var count: Int
         var next: String?   // Create as an optional to handle 'null' return
-//        var previous: String?     // 'previous' isn't used in this app
+        //        var previous: String?     // 'previous' isn't used in this app
         var results: [Creature]
     }
     
@@ -34,7 +34,7 @@ class Creatures {
         do {
             let (data, _) = try await URLSession.shared.data(from: url)      // '_' could be replaced with 'response' but is not used in this app
             
-             // Try to decode the JSON data into our own data structures
+            // Try to decode the JSON data into our own data structures
             guard let returned = try? JSONDecoder().decode(Returned.self, from: data) else {
                 print("😡 JSON ERROR: Could not decode JSON data")
                 isLoading = false
@@ -46,12 +46,19 @@ class Creatures {
                 self.creaturesArray = self.creaturesArray + returned.results
                 isLoading = false
             }
-
+            
             
             
         } catch {
             print("😡 ERROR: Could not get data from: \(urlString)")
             isLoading = false
+        }
+    }
+    
+    func loadNextPage(creature: Creature) async {
+        guard let lastCreature = creaturesArray.last else { return }
+        if creature.id == lastCreature.id && urlString.hasPrefix("http") {
+            await getData()
         }
     }
     
@@ -62,6 +69,6 @@ class Creatures {
             await getData()     // get nextpage of data
             await loadAllCreatures()    // Recursive call until there are no more pages to load 'next = null'
         }
-    
+        
     }
 }

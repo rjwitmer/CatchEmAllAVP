@@ -11,26 +11,23 @@ import RealityKitContent
 
 struct CreaturesListView: View {
     @State var creatures = Creatures()
-    //    var creatures: [String] = ["Pikachu", "Squirtle", "Charzard", "Snorlax"]
+    @State private var searchText: String = ""
     
     var body: some View {
         NavigationStack {
             ZStack {
-                List(creatures.creaturesArray) { creature in
+                List(searchResults) { creature in
                     LazyVStack {
                         NavigationLink {
                             DetailView(creature: creature)
                         } label: {
-                            Text(creature.name.capitalized)
+                            Text("\(returnIndex(of: creature)). \(creature.name.capitalized)")
                                 .font(.title2)
                         }
                     }
                     .task {
-                        guard let lastCreature = creatures.creaturesArray.last else { return }
-                        if creature.name == lastCreature.name && creatures.urlString.hasPrefix("http") {
-                            await creatures.getData()
+                        await creatures.loadNextPage(creature: creature)
                         }
-                    }
                     
                 }
                 .listStyle(.automatic)
@@ -51,6 +48,7 @@ struct CreaturesListView: View {
 
                     }
                 }
+                .searchable(text: $searchText)
                 
                 if creatures.isLoading {
                     ProgressView()
@@ -63,6 +61,23 @@ struct CreaturesListView: View {
         .task {
             await creatures.getData()
         }
+    }
+    
+    var searchResults: [Creature] {
+        if searchText.isEmpty {
+            return creatures.creaturesArray
+        } else {    // There is searchText data
+            return creatures.creaturesArray.filter {
+                $0.name.lowercased().contains(searchText.lowercased())
+            }
+        }
+    }
+    
+    func returnIndex(of creature: Creature) -> Int {
+        guard let index = creatures.creaturesArray.firstIndex(where: {$0.name == creature.name}) else {
+            return 0
+        }
+        return index + 1
     }
 }
 
